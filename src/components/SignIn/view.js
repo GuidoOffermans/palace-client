@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SignIn(props) {
+export default function SignInForm(props) {
 
   return (
     <form onSubmit={props.onSubmit}>

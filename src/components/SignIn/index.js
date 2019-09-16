@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loginUser } from '../actions'
+import { loginUser } from '../../redux/actions'
+import SignInForm from './view'
+import '../UserForm/UserForm.css'
 
 class SignInContainer extends React.Component {
   state = { name: '', password: '' }
@@ -17,7 +19,7 @@ class SignInContainer extends React.Component {
   }
 
   render() {
-    return <LoginForm
+    return <SignInForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state}
