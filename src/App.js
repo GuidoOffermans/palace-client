@@ -4,6 +4,7 @@ import request from 'superagent'
 import { Route } from 'react-router-dom';
 
 import Lobby from './components/Lobby'
+import SignIn from './components/SignIn'
 
 function App(props) {
 
@@ -15,6 +16,7 @@ function App(props) {
 		<div className="App">
 			<main>
 				<Route path="/" exact component={Lobby} />
+				<Route path="/login" component={SignIn} />
 			</main>
 		</div>
 	);
