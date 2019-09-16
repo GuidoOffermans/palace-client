@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 
 import Lobby from './components/Lobby'
 import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 
 function App(props) {
 
@@ -17,6 +18,7 @@ function App(props) {
 			<main>
 				<Route path="/" exact component={Lobby} />
 				<Route path="/login" component={SignIn} />
+				<Route path="/sign-up" component={SignUp} />
 			</main>
 		</div>
 	);
