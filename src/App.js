@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { url } from './constants';
 
 import { setGames } from './redux/actions';
 import Lobby from './components/Lobby';
+import UserForm from './components/UserForm'
 
 function App(props) {
 
@@ -25,11 +26,13 @@ function App(props) {
 
 	return (
 		<div className="App">
-    <header>
+    <header className='App-header'>
       <h1>palace</h1>
+      <Link to='/sign'>signIn/ signUp</Link>
     </header>
 			<main>
 				<Route path="/" exact component={Lobby} />
+        <Route path="/sign" exact component={UserForm} />
 			</main>
     <footer>
       <p>footer</p>
