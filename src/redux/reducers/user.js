@@ -1,7 +1,11 @@
-export default function user (state = [], action = {}) {
+import { JWT } from '../actions'
+
+
+export default function user(state = [], action = {}) {
   switch (action.type) {
-  default:
-    return state
+    case JWT:
+      return action.payload
+    default:
+      return state
   }
 }
-

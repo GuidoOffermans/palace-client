@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { url } from './constants';
 
+
+import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 import { setGames } from './redux/actions';
 import Lobby from './components/Lobby';
-import UserForm from './components/UserForm'
 
 function App(props) {
 
@@ -32,7 +34,8 @@ function App(props) {
     </header>
 			<main>
 				<Route path="/" exact component={Lobby} />
-        <Route path="/sign" exact component={UserForm} />
+				<Route path="/login" component={SignIn} />
+				<Route path="/sign-up" component={SignUp} />
 			</main>
     <footer>
       <p>footer</p>
