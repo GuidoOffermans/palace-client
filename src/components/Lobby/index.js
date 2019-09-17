@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import CreateGameForm from '../CreateGameForm/index';
 import Game from '../Game';
-import './lobby.css'
+import './lobby.css';
 
 const Lobby = (props) => {
 	console.log('lobby', props.games);
@@ -12,13 +12,13 @@ const Lobby = (props) => {
 	const gameList =
 		games &&
 		games.map((game) => {
-			return <Game name={game.name} key={game.id} />;
+			return <Game name={game.name} key={game.id} id={game.id}/>;
 		});
 
 	return (
 		<div>
 			<CreateGameForm />
-			<div className='gameList'>{gameList}</div>
+			<div className="gameList">{gameList}</div>
 		</div>
 	);
 };
