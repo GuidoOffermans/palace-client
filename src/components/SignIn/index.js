@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../redux/actions'
 import SignInForm from './view'
-import '../UserForm/UserForm.css'
+import './UserForm.css'
 import { Redirect } from 'react-router-dom'
 
 

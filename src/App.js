@@ -30,7 +30,7 @@ function App(props) {
 		<div className="App">
     <header className='App-header'>
       <h1>palace</h1>
-      <Link to='/sign'>signIn/ signUp</Link>
+      <Link to='/login'>signIn/ signUp</Link>
     </header>
 			<main>
 				<Route path="/" exact component={Lobby} />
