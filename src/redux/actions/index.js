@@ -1,5 +1,6 @@
-import request from 'superagent'
 
+import request from 'superagent'
+import {url} from '../../constants'
 export const JWT = 'JWT'
 
 const baseUrl = 'http://localhost:4000'
@@ -20,4 +21,13 @@ export const loginUser = data => dispatch => {
       const action = user(response.body)
       dispatch(action)
     })
+
+export const SET_GAMES = 'SET_GAMES'
+
+export function setGames (games) {
+  return {
+    type: SET_GAMES,
+    payload: games
+  }
+
 }

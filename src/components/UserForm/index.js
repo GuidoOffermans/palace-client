@@ -1,12 +1,11 @@
 import React from 'react'
 
+
 class UserForm extends React.Component {
 
-  render() {
-    return (
-      <div>I am User Form</div>
-    )
-  }
+const UserForm = () => {
+  return 'sign-up/ sign-in'
+
 }
 
 export default UserForm
