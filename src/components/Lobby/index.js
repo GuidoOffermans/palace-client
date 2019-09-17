@@ -12,7 +12,7 @@ const Lobby = (props) => {
 	const gameList =
 		games &&
 		games.map((game) => {
-			return <Game name={game.name} key={game.id} id={game.id}/>;
+			return <Game name={game.name} key={game.id} gameId={game.id}/>;
 		});
 
 	return (
