@@ -1,6 +1,6 @@
 import React from 'react'
 import SignUpForm from './view'
-import '../UserForm/UserForm.css'
+import '../SignIn/UserForm.css'
 import request from 'superagent'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
