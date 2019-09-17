@@ -9,6 +9,7 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import { setGames } from './redux/actions';
 import Lobby from './components/Lobby';
+import GameSession from './components/GameSession'
 
 function App(props) {
 
@@ -36,6 +37,7 @@ function App(props) {
 				<Route path="/" exact component={Lobby} />
 				<Route path="/login" component={SignIn} />
 				<Route path="/sign-up" component={SignUp} />
+        <Route path="/game/:id" component={GameSession} />
 			</main>
     <footer>
       <p>footer</p>
