@@ -9,18 +9,20 @@ const Game = (props) => {
 	const { name, gameId, jwt } = props;
 	console.log('users:', props.users)
 
+  
 	const addUserToGame = () => {
-		console.log('clicked');
-		request.put(`${url}/join/${gameId}`).set('Authorization',`Bearer ${jwt}`).then();
+    request.put(`${url}/join/${gameId}`)
+    .set("Authorization", `Bearer ${jwt}`)
+    .then(res => console.log(res)).catch(console.error);
 	};
 
 	return (
 		<div className="game">
-			<h2>{name}</h2>
-			<Link to={`/game/${gameId}`}>
+			<h2>{name}</h2> 
+      {props.jwt ? <Link to={`/game/${gameId}`}>
 				<button onClick={addUserToGame}>join</button>
-			</Link>
-			{/* {props.users} */}
+			</Link> : ''}
+			
 		</div>
 	);
 };
