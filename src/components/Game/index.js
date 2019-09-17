@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 const Game = (props) => {
 	const { name, gameId, jwt } = props;
+
   
 	const addUserToGame = () => {
     request.put(`${url}/join/${gameId}`)
@@ -25,11 +26,10 @@ const Game = (props) => {
 	);
 };
 
-function mapStateToProps(state) {
-	return {
-		
-		jwt: state.user.jwt
-	};
+const mapStateToProps = (state) => {
+  return {
+    jwt: state.user.jwt
+  }
 }
 
 export default connect(mapStateToProps)(Game);
