@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 const Game = (props) => {
 	const { name, gameId, jwt } = props;
+	console.log('users:', props.users)
 
 	const addUserToGame = () => {
 		console.log('clicked');
@@ -19,13 +20,15 @@ const Game = (props) => {
 			<Link to={`/game/${gameId}`}>
 				<button onClick={addUserToGame}>join</button>
 			</Link>
+			{/* {props.users} */}
 		</div>
 	);
 };
 
 const mapStateToProps = (state) => {
   return {
-    jwt: state.user.jwt
+		jwt: state.user.jwt,
+		games: state.games
   }
 }
 
