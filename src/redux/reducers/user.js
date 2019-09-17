@@ -1,4 +1,4 @@
-import { JWT } from '../actions'
+import { JWT } from '../actions/index'
 
 
 export default function user(state = [], action = {}) {
