@@ -63,7 +63,7 @@ const GameSession = (props) => {
 		return (
 			<div>
 				{/* {renderCards()} */}
-				<GameTable game_info={thisGame.game_info}/>
+				{thisGame.game_info ? <GameTable game_info={thisGame.game_info} userId={props.userId}/> : ''}
 				<button onClick={leaveGame}>leave</button>
 			</div>
 		)
@@ -73,7 +73,8 @@ const GameSession = (props) => {
 function mapStateToProps(state) {
 	return {
 		jwt: state.user.jwt,
-		games: state.games
+		games: state.games,
+		userId: state.user.id
 	};
 }
 
