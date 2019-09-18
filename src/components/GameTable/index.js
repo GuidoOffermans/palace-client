@@ -7,7 +7,7 @@ class GameTable extends React.Component {
   render() {
     return <div className="game-table">
       <Player />
-      <DeckMiddle />
+      <DeckMiddle remaining={this.props.game_info.remaining}/>
       <Player />
     </div>
   }
