@@ -9,14 +9,15 @@ class GameTable extends React.Component {
   }
   
   setCurrentUser = () => {
-    const [ piles ] = this.props.game_info
-    const currUser = piles.find(pile => pile.pileId === this.props.userId)
+    const { piles } = this.props.game_info
+    console.log('piles:', piles)
+    const currUser = piles.find(pile => pile[pileId] === this.props.userId)
     return this.setState({currUser})
   }
 
   setOpponent = () => {
-    const [ piles ] = this.props.game_info
-    const opUser = piles.find(pile => pile.pileId !== this.props.userId)
+    const { piles } = this.props.game_info
+    const opUser = piles.find(pile => pile[pileId] !== this.props.userId)
     return this.setState({opUser})
   }
 
