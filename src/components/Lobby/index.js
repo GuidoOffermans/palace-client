@@ -6,7 +6,7 @@ import Game from '../Game';
 import './lobby.css';
 
 const Lobby = (props) => {
-	console.log('lobby', props.games);
+	// console.log('lobby', props.games);
 
 	const { games } = props;
 	const gameList =
