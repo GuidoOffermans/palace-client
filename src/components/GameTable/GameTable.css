@@ -1,0 +1,19 @@
+.game-table {
+  display: flex;
+  flex-direction: column;
+  min-height: 700px;
+}
+
+.deck-middle {
+  background-color: beige;
+  /* flex: 2; */
+  padding: 1rem;
+  height: 200px;
+}
+
+.player {
+  background-color: bisque;
+  /* flex: ; */
+  padding: 1rem;
+  height: 200px;
+}
