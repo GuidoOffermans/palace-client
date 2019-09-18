@@ -8,8 +8,8 @@ const GameSession = (props) => {
 	const [ redirect, setRedirect ] = useState(false);
 	const [ readyToPlay, setReadyToPlay ] = useState(false);
 
-  const { jwt, games } = props;
-  
+	const { jwt, games } = props;
+
 	const gameId = props.match.params.id;
 
 	const thisGame = games.find((game) => game.id === Number(gameId));
@@ -28,15 +28,17 @@ const GameSession = (props) => {
 	};
 
 	const start = () => {
-    request.put(`${url}/start/${gameId}/${thisGame.deck_id}`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then()
-  };
+		request
+			.put(`${url}/start/${gameId}/${thisGame.deck_id}`)
+			.set('Authorization', `Bearer ${jwt}`)
+      .then(cards => console.log(cards.body))
+      .catch(console.error);
+	};
 
 	return (
 		<div>
 			<p>welcome to this game room</p>
-      <p>{thisGame ? thisGame.game_status : ''}</p>
+			<p>{thisGame ? thisGame.game_status : ''}</p>
 			<h3>users in this room:</h3>
 			{thisGame ? (
 				thisGame.Users.map((user) => <p key={user.id}>{user.name}</p>)
