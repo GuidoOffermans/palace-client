@@ -99,7 +99,8 @@ const GameSession = (props) => {
 	const startRequest = () => {
 		request.put(`${url}/start/${gameId}/${thisGame.deck_id}`)
 			.set('Authorization', `Bearer ${jwt}`)
-			.then()
+      .then(cards => console.log('response',cards.body))
+      .catch(console.error)
 	};
 
 	const renderCards = () => {
