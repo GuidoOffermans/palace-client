@@ -10,6 +10,7 @@ const Game = (props) => {
 	console.log('users:', props.games[index].Users);
 
 	const addUserToGame = () => {
+    console.log('adddded')
 		request
 			.put(`${url}/join/${gameId}`)
 			.set('Authorization', `Bearer ${jwt}`)
@@ -21,7 +22,7 @@ const Game = (props) => {
 		if (!props.jwt) {
 			return <p>not logged in</p>;
 		}
-		if (props.games[index].Users.length >= 4) {
+		if (props.games[index].Users.length >= 2) {
 			return 'full';
 		} else {
 			return (

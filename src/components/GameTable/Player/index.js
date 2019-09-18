@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-class Player extends React.Component {
+const Player = (props) => {
+	console.log('props', props)
+	return (
+		<div className="player">
+			<p>{props.side}</p>
+			<p>{props.player.pileId}</p>
+      {props.player.cards.map(card => <img className='card-pic' src={card.image} alt={card.image} key={card.code}/>)}
+		</div>
+	);
+};
 
-  render() {
-    return <div className="player">PlayersSide
-      <p>{this.props.player.pileId}</p>
-    </div>
-  }
-}
-
-export default Player
+export default Player;
