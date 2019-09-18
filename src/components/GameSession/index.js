@@ -89,6 +89,7 @@ const GameSession = (props) => {
 		setRedirect(true);
 	};
 
+
 	const startPlaying = () => {
 		startRequest()
 		startGame(true)
@@ -132,7 +133,6 @@ const GameSession = (props) => {
 			</div>
 		)
 	}
-
 };
 
 function mapStateToProps(state) {
