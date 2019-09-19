@@ -21,7 +21,7 @@ const GameSession = (props) => {
 	const leaveGame = () => {
 		// console.log('jwt', jwt);
 		const gameId = props.match.params.id;
-		console.log(gameId);
+		// console.log(gameId);
 		request
 			.put(`${url}/leave/${gameId}`)
 			.set('Authorization', `Bearer ${jwt}`)
@@ -40,7 +40,8 @@ const GameSession = (props) => {
 	const startRequest = () => {
 		request.put(`${url}/start/${gameId}/${thisGame.deck_id}`)
 			.set('Authorization', `Bearer ${jwt}`)
-			.then(cards => console.log('response', cards.body))
+			.then()
+			// .then(cards => console.log('response', cards.body))
 			.catch(console.error)
 	};
 
@@ -64,7 +65,7 @@ const GameSession = (props) => {
 	} else {
 		return (
 			<div>
-				{thisGame ? <GameTable game_info={thisGame.game_info} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
+				{thisGame ? <GameTable game={thisGame} game_info={thisGame.game_info} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
 				<button onClick={leaveGame}>leave</button>
         {redirect ? <Redirect to="/" /> : ''}
 			</div>
