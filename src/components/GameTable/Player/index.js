@@ -21,7 +21,7 @@ const Player = (props) => {
 } else {
     return 'loading'
   }
-=======
+
 
 };
 
