@@ -15,40 +15,24 @@ const Player = (props) => {
 			.catch(console.error);
 	};
 
-	console.log('props of player component:', props);
-	if (props.player.side !== 'opponent') {
-		return (
-			<div className="player">
-				<p>{props.side}</p>
-				<p>{props.player.pileId}</p>
-				{props.player.cards.map((card) => (
-					<img
-						onClick={playCard}
-						className={`card-pic ${card.code}`}
-						src={card.image}
-						alt={card.code}
-						key={card.code}
-					/>
-				))}
-			</div>
-		);
-	} else {
-		return (
-			<div className="player">
-				<p>{props.side}</p>
-				<p>{props.player.pileId}</p>
 
-				{props.player.cards.map((card) => (
-					<img
-						onClick={playCard}
-						className={`card-pic ${card.code}`}
-						src="http://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-tally-ho-circle-back-2_grande.png?v=1530155016"
-						key={card.code}
-					/>
-				))}
-			</div>
-		);
-	}
+	console.log('props of player component:', props)
+  if(props.player){
+	return (
+		<div className="player">
+			<p>{props.side}</p>
+			<p>{props.player.pileId}</p>
+      <p>{props.turn ? 'its your turn' : ' opponents turn'}</p>
+      {props.player.cards.map(card => <img onClick={playCard} className={`card-pic ${card.code}`} src={card.image} alt={card.image} key={card.code}/>)}
+		</div>
+
+	)
+} else {
+    return 'loading'
+  }
+
+
+
 };
 
 export default Player;
