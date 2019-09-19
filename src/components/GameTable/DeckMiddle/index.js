@@ -10,7 +10,7 @@ class DeckMiddle extends React.Component {
     request
     .put(`${url}/draw/${this.props.gameId}/${this.props.deck_id}`)
     .set('Authorization', `Bearer ${this.props.jwt}`)
-    .then()
+    .then(() => console.log('545647575647574654765475757'))
     .catch(console.error)
     console.log('deck clicked')
   }
