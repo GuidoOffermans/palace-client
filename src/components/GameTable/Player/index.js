@@ -14,6 +14,7 @@ const Player = (props) => {
 		<div className="player">
 			<p>{props.side}</p>
 			<p>{props.player.pileId}</p>
+      <p>{props.turn ? 'its your turn' : ' opponents turn'}</p>
       {props.player.cards.map(card => <img onClick={playCard} className={`card-pic ${card.code}`} src={card.image} alt={card.image} key={card.code}/>)}
 		</div>
 
