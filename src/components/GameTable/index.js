@@ -7,7 +7,8 @@ function GameTable(props) {
 	const [ oppenent, setOpponent ] = useState(null);
 
 	useEffect(() => {
-		if (props.game_info) {
+		if (props.game_info && props.game_info.piles.length >= 2) {
+			console.log('in game table useeffect, game_info:', props.game_info)
 			getOpponent();
 			getCurrentUser();
 		}
@@ -41,7 +42,7 @@ function GameTable(props) {
 				''
 			)}
 			{props.game_info ? (
-				<DeckMiddle remaining={props.game_info.remaining} />
+				<DeckMiddle remaining={props.game_info.remaining} gameId={props.gameId} deck_id={props.deck_id} jwt={props.jwt} />
 			) : (
 				''
 			)}
