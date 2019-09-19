@@ -50,7 +50,7 @@ const GameSession = (props) => {
 				<p>welcome to this game room</p>
 				<p>{thisGame ? thisGame.game_status : ''}</p>
 				<h3>users in this room:</h3>
-				{thisGame.Users ? (
+				{thisGame ? (
 					thisGame.Users.map((user) => <p key={user.id}>{user.name}</p>)
 				) : (
 						''
@@ -64,7 +64,7 @@ const GameSession = (props) => {
 	} else {
 		return (
 			<div>
-				{thisGame.game_info ? <GameTable game_info={thisGame.game_info} game={thisGame} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
+				{thisGame ? <GameTable game_info={thisGame.game_info} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
 				<button onClick={leaveGame}>leave</button>
         {redirect ? <Redirect to="/" /> : ''}
 			</div>
