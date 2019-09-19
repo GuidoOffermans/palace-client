@@ -10,13 +10,13 @@ class DeckMiddle extends React.Component {
     request
     .put(`${url}/draw/${this.props.gameId}/${this.props.deck_id}`)
     .set('Authorization', `Bearer ${this.props.jwt}`)
-    .then(() => console.log('545647575647574654765475757'))
+    .then()
     .catch(console.error)
     console.log('deck clicked')
   }
 
   renderDiscardPile = () => {
-    console.log('deckmiddle props:', this.props.piles)
+    // console.log('deckmiddle props:', this.props.piles)
     
     const discardPile = this.props.piles.find(pile => pile.pileId === 'discard')
     if (discardPile && discardPile.cards) return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />

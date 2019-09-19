@@ -42,7 +42,7 @@ function GameTable(props) {
 		const currUser = piles.find(
 			(pile) => Number(pile.pileId) === props.userId
 		);
-		console.log('cur', currUser);
+		// console.log('cur', currUser);
 		setCurrentUser(currUser);
 		return;
 	};
@@ -54,7 +54,7 @@ function GameTable(props) {
 				Number(pile.pileId) !== Number(props.userId) &&
 				pile.pileId !== 'discard'
 		);
-		console.log('op', opUser);
+		// console.log('op', opUser);
 		setOpponent(opUser);
 		return;
 	};
@@ -64,12 +64,12 @@ function GameTable(props) {
 			<div className="game-table">
 				{oppenent !== null ? (
 					<Oppenent
-						turn={turn.user}
+						// turn={turn.user}
 						side="oppenent"
 						player={oppenent}
-						gameId={props.gameId}
-						deck_id={props.deck_id}
-						jwt={props.jwt}
+						// gameId={props.gameId}
+						// deck_id={props.deck_id}
+						// jwt={props.jwt}
 					/>
 				) : (
 					''
@@ -87,7 +87,7 @@ function GameTable(props) {
 				)}
 				{currentUser !== null ? (
 					<Player
-						turn={turn.opp}
+						turn={turn.user}
 						side="you"
 						player={currentUser}
 						gameId={props.gameId}

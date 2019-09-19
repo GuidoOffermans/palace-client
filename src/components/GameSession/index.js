@@ -19,9 +19,9 @@ const GameSession = (props) => {
 	console.log('thisGame:', thisGame);
 
 	const leaveGame = () => {
-		console.log('jwt', jwt);
+		// console.log('jwt', jwt);
 		const gameId = props.match.params.id;
-		console.log(gameId);
+		// console.log(gameId);
 		request
 			.put(`${url}/leave/${gameId}`)
 			.set('Authorization', `Bearer ${jwt}`)
@@ -40,7 +40,8 @@ const GameSession = (props) => {
 	const startRequest = () => {
 		request.put(`${url}/start/${gameId}/${thisGame.deck_id}`)
 			.set('Authorization', `Bearer ${jwt}`)
-			.then(cards => console.log('response', cards.body))
+			.then()
+			// .then(cards => console.log('response', cards.body))
 			.catch(console.error)
 	};
 

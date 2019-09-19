@@ -4,9 +4,9 @@ import request from 'superagent';
 
 const Player = (props) => {
 	const playCard = (e) => {
-		console.log('a card was clicked', e.target.className);
-		console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
-		console.log('target card:', e.target.alt);
+		// console.log('a card was clicked', e.target.className);
+		// console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
+		// console.log('target card:', e.target.alt);
 		request
 			.put(`${url}/play-card/${props.gameId}/${props.deck_id}`)
 			.send({ pileName: props.player.pileId, code: e.target.alt })
