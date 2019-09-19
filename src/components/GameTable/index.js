@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DeckMiddle from './DeckMiddle';
 import Player from './Player';
 
+
 function GameTable(props) {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ oppenent, setOpponent ] = useState(null);
