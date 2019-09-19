@@ -16,11 +16,11 @@ const Player = (props) => {
 	};
 
 	console.log('props of player component:', props);
-	if (props.player.side !== 'opponent') {
+	
 		return (
 			<div className="player">
 				<p>{props.side}</p>
-				<p>{props.player.pileId}</p>
+        <h3>{props.turn === true ? "you can play" : "wait for the other player"}</h3>
 				{props.player.cards.map((card) => (
 					<img
 						onClick={playCard}
@@ -32,23 +32,7 @@ const Player = (props) => {
 				))}
 			</div>
 		);
-	} else {
-		return (
-			<div className="player">
-				<p>{props.side}</p>
-				<p>{props.player.pileId}</p>
-
-				{props.player.cards.map((card) => (
-					<img
-						onClick={playCard}
-						className={`card-pic ${card.code}`}
-						src="http://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-tally-ho-circle-back-2_grande.png?v=1530155016"
-						key={card.code}
-					/>
-				))}
-			</div>
-		);
-	}
+	
 };
 
 export default Player;

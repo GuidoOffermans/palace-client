@@ -64,7 +64,7 @@ const GameSession = (props) => {
 	} else {
 		return (
 			<div>
-				{thisGame ? <GameTable game_info={thisGame.game_info} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
+				{thisGame ? <GameTable game={thisGame} game_info={thisGame.game_info} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
 				<button onClick={leaveGame}>leave</button>
         {redirect ? <Redirect to="/" /> : ''}
 			</div>
