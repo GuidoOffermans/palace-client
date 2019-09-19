@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DeckMiddle from './DeckMiddle';
 import Player from './Player';
 
+
 function GameTable(props) {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ oppenent, setOpponent ] = useState(null);
@@ -11,7 +12,9 @@ function GameTable(props) {
 			console.log('in game table useeffect, game_info:', props.game_info)
 			getOpponent();
 			getCurrentUser();
-		}
+		} else{
+      
+    }
 	});
 
 	const getCurrentUser = () => {
@@ -34,6 +37,8 @@ function GameTable(props) {
 		return;
 	};
 
+
+  if (props.game_info) {
 	return (
 		<div className="game-table">
 			{oppenent !== null ? (
@@ -53,6 +58,9 @@ function GameTable(props) {
 			)}
 		</div>
 	);
-}
+	} else {
+		return <h1>loading......</h1>;
+	}
+
 
 export default GameTable;
