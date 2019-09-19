@@ -30,8 +30,7 @@ function GameTable(props) {
 	const getOpponent = () => {
 		const piles = props.game_info.piles;
 		const opUser = piles.find(
-			(pile) => Number(pile.pileId) !== props.userId
-		);
+			(pile) => Number(pile.pileId) !== Number(props.userId) && pile.pileId !== 'discard')
 		console.log('op', opUser);
 		setOpponent(opUser);
 		return;

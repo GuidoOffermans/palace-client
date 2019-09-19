@@ -19,7 +19,7 @@ class DeckMiddle extends React.Component {
     console.log('deckmiddle props:', this.props.piles)
     
     const discardPile = this.props.piles.find(pile => pile.pileId === 'discard')
-    if (discardPile) return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />
+    if (discardPile && discardPile.cards) return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />
     // if (discardPile) return console.log("discard pile cards", discardPile.cards)
     else return ''
   }
