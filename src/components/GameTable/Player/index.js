@@ -16,7 +16,7 @@ const Player = (props) => {
 		return cardValue
 	}
 
-	const canPlay = (playerChoice) => {
+	const canPlayCard = (playerChoice) => {
 		const card = translateCard(playerChoice)
 		let discard = null
 		if (props.discardTop) discard = translateCard(props.discardTop)
@@ -27,13 +27,13 @@ const Player = (props) => {
 
 	const playCard = (e) => {
 		if (cannotPlay === true) return
-		// console.log('a card was clicked', e.target.className);
+		console.log('a card was clicked', e.target.className);
 		// console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
 		// console.log('target card:', e.target.alt);
 		console.log('player component discardtop', props.discardTop)
 
-		if (canPlay(e.target.alt)) {
-			setCannotPlay(true)
+		if (canPlayCard(e.target.alt)) {
+			// setCannotPlay(true)
 			request
 				.put(`${url}/play-card/${props.gameId}/${props.deck_id}`)
 				.send({ pileName: props.player.pileId, code: e.target.alt })
