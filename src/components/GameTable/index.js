@@ -9,7 +9,7 @@ function GameTable(props) {
 
 	useEffect(() => {
 		if (props.game_info && props.game_info.piles.length >= 2) {
-			console.log('in game table useeffect, game_info:', props.game_info)
+			// console.log('in game table useeffect, game_info:', props.game_info)
 			getOpponent();
 			getCurrentUser();
 		} else{
@@ -22,7 +22,7 @@ function GameTable(props) {
 		const currUser = piles.find(
 			(pile) => Number(pile.pileId) === props.userId
 		);
-		console.log('cur', currUser);
+		// console.log('cur', currUser);
 		setCurrentUser(currUser);
 		return;
 	};
@@ -31,7 +31,7 @@ function GameTable(props) {
 		const piles = props.game_info.piles;
 		const opUser = piles.find(
 			(pile) => Number(pile.pileId) !== Number(props.userId) && pile.pileId !== 'discard')
-		console.log('op', opUser);
+		// console.log('op', opUser);
 		setOpponent(opUser);
 		return;
 	};

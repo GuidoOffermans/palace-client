@@ -4,6 +4,7 @@ import { url } from '../../constants';
 export const JWT = 'JWT';
 
 
+
 function user(payload) {
 	return {
 		type: JWT,
@@ -27,3 +28,11 @@ export function setGames(games) {
 	};
 }
 
+export const CARD_VALUE = 'CARD_VALUE'
+
+export function setDiscardTop (payload) {
+	return {
+		type: CARD_VALUE,
+		payload
+	};
+}

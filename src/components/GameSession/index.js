@@ -19,7 +19,7 @@ const GameSession = (props) => {
 	console.log('thisGame:', thisGame);
 
 	const leaveGame = () => {
-		console.log('jwt', jwt);
+		// console.log('jwt', jwt);
 		const gameId = props.match.params.id;
 		console.log(gameId);
 		request
