@@ -10,7 +10,9 @@ function GameTable(props) {
 		if (props.game_info) {
 			getOpponent();
 			getCurrentUser();
-		}
+		} else{
+      
+    }
 	});
 
 	const getCurrentUser = () => {
@@ -33,25 +35,29 @@ function GameTable(props) {
 		return;
 	};
 
-	return (
-		<div className="game-table">
-			{oppenent !== null ? (
-				<Player side="oppenent" player={oppenent} />
-			) : (
-				''
-			)}
-			{props.game_info ? (
-				<DeckMiddle remaining={props.game_info.remaining} />
-			) : (
-				''
-			)}
-			{currentUser !== null ? (
-				<Player side="you" player={currentUser} />
-			) : (
-				''
-			)}
-		</div>
-	);
+	if (props.game_info) {
+		return (
+			<div className="game-table">
+				{oppenent !== null ? (
+					<Player side="oppenent" player={oppenent} />
+				) : (
+					''
+				)}
+				{props.game_info ? (
+					<DeckMiddle remaining={props.game_info.remaining} />
+				) : (
+					''
+				)}
+				{currentUser !== null ? (
+					<Player side="you" player={currentUser} />
+				) : (
+					''
+				)}
+			</div>
+		);
+	} else {
+		return <h1>loading......</h1>;
+	}
 }
 
 export default GameTable;
