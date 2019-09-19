@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 const Game = (props) => {
 	const { name, gameId, jwt, index } = props;
-	console.log('users:', props.games[index].Users);
+	// console.log('users:', props.games[index].Users);
 
 	const addUserToGame = () => {
     console.log('adddded')
