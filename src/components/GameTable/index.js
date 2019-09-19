@@ -42,17 +42,17 @@ function GameTable(props) {
 	return (
 		<div className="game-table">
 			{oppenent !== null ? (
-				<Player side="oppenent" player={oppenent} />
+				<Player side="oppenent" player={oppenent} gameId={props.gameId} deck_id={props.deck_id} jwt={props.jwt} />
 			) : (
 				''
 			)}
 			{props.game_info ? (
-				<DeckMiddle remaining={props.game_info.remaining} gameId={props.gameId} deck_id={props.deck_id} jwt={props.jwt} />
+				<DeckMiddle remaining={props.game_info.remaining} gameId={props.gameId} deck_id={props.deck_id} jwt={props.jwt} piles={props.game_info.piles} />
 			) : (
 				''
 			)}
 			{currentUser !== null ? (
-				<Player side="you" player={currentUser} />
+				<Player side="you" player={currentUser} gameId={props.gameId} deck_id={props.deck_id} jwt={props.jwt} />
 			) : (
 				''
 			)}
