@@ -15,12 +15,22 @@ class DeckMiddle extends React.Component {
     console.log('deck clicked')
   }
 
+  renderDiscardPile = () => {
+    console.log('deckmiddle props:', this.props.piles)
+    
+    const discardPile = this.props.piles.find(pile => pile.pileId === 'discard')
+    if (discardPile && discardPile.cards) return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />
+    // if (discardPile) return console.log("discard pile cards", discardPile.cards)
+    else return ''
+  }
+
   render() {
-    console.log('gameid:', this.props.gameId, 'deckid:', this.props.deck_id)
+    // console.log('gameid:', this.props.gameId, 'deckid:', this.props.deck_id)
     return <div className="deck-middle">
       <img onClick={this.drawFromDeck} className="card-pic" alt="back-pic" src="http://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-tally-ho-circle-back-2_grande.png?v=1530155016" />
       <p className="remaining-cards">{this.props.remaining}</p>
-      {console.log('remaining:', this.props.remaining)}
+      {/* {console.log('remaining:', this.props.remaining)} */}
+      {this.renderDiscardPile()}
     </div>
   }
 }
