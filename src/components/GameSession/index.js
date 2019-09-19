@@ -8,7 +8,8 @@ import GameTable from '../GameTable/'
 const GameSession = (props) => {
 	const [redirect, setRedirect] = useState(false);
 	// const [ readyToPlay, setReadyToPlay ] = useState(false);
-	const [gameOn, startGame] = useState(false)
+  const [gameOn, startGame] = useState(false)
+  
 
 	const { jwt, games } = props;
 
@@ -54,17 +55,18 @@ const GameSession = (props) => {
 				) : (
 						''
 					)}
-				<button onClick={startPlaying}>start</button>
+				{ thisGame.Users && thisGame.Users.length > 1 ?<button onClick={startPlaying}>start</button> : ''}
 				<button onClick={leaveGame}>leave</button>
-				{redirect ? <Redirect to="/" /> : ''}
+        {redirect ? <Redirect to="/" /> : ''}
+			
 			</div>
 		);
 	} else {
 		return (
 			<div>
-				{/* {renderCards()} */}
-				{thisGame.game_info ? <GameTable game_info={thisGame.game_info} userId={props.userId}/> : ''}
+				{thisGame ? <GameTable game_info={thisGame.game_info} userId={props.userId}/> : ''}
 				<button onClick={leaveGame}>leave</button>
+        {redirect ? <Redirect to="/" /> : ''}
 			</div>
 		)
 	}
