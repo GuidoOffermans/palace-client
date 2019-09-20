@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const Player = (props) => {
 
-	const [cannotPlay, setCannotPlay] = useState(false)
+	// const [cannotPlay, setCannotPlay] = useState(false)
 
 	const translateCard = (cardValue) => {
 		if (cardValue[0] === '2') return 2
@@ -26,10 +26,6 @@ const Player = (props) => {
 		return cardValue
 	}
 
-	const parsePlayerCoice =(playerCoice) => {
-
-	}
-
 	const canPlayCard = (playerChoice) => {
 		console.log('playercoice:', playerChoice)
 		const card = translateCard(playerChoice)
@@ -41,7 +37,7 @@ const Player = (props) => {
 
 	const playCard = (e) => {
 		console.log('play card clicked-------------------------------------------------------')
-		if (cannotPlay === true) return
+		// if (cannotPlay === true) return
 		console.log('a card was clicked', e.target.className);
 		// console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
 		// console.log('target card:', e.target.alt);
