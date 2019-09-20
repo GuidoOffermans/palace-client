@@ -5,6 +5,7 @@ import request from 'superagent'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { loginUser } from '../../redux/actions'
+import { url } from '../../constants'
 
 class SignUpContainer extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class SignUpContainer extends React.Component {
   }
 
   signUp = () => {
-    request.post('http://localhost:4000/sign-up')
+    request.post(`${url}/sign-up`)
       .send({ name: this.state.name, password: this.state.password })
       .then(() => this.props.loginUser({name: this.state.name, password: this.state.password}))
       .catch(err => console.error(err))
