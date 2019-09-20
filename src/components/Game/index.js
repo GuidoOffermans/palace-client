@@ -20,7 +20,7 @@ const Game = (props) => {
 
 	const canRenderButton = () => {
 		if (!props.jwt) {
-			return <p>not logged in</p>;
+			return <p>login to join</p>;
 		}
 		if (props.games[index].Users.length >= 2) {
 			return 'full';

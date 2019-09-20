@@ -1,6 +1,8 @@
 import React from 'react';
 import { url } from '../../../constants';
 import request from 'superagent';
+
+
 import { connect } from 'react-redux';
 import { useState } from 'react';
 
@@ -37,17 +39,7 @@ const Player = (props) => {
 		else return false;
 	};
 
-	// const checkIfYouCanPlay = () => {
-	//   console.log('userID',props.user.id,'--', 'turnId', props.game_turn )
-	// 	if (Number(props.user.id) === Number(props.game_turn)) {
-	// 		console.log('you can play');
-	// 		return setCanPlay(true);
-	// 	} else {
-	// 		console.log('you cannot play');
-	//     return setCanPlay(false);
-	//   }
-
-	// };
+	
 
 	const playCard = (e) => {
 		if (Number(props.user.id) === Number(props.game_turn)) {
@@ -79,11 +71,22 @@ const Player = (props) => {
 		console.log('deck clicked');
 	};
 
-	console.log('props of player component:', props);
+
+	const takeDiscard = () => {
+		request
+			.put(`${url}/take-discard/${props.gameId}/${props.deck_id}`)
+			.send({ pileName: props.player.pileId})
+			.set('Authorization', `Bearer ${props.jwt}`)
+			.then(() => console.log('take card response received'))
+			.catch(console.error);
+		props.setDiscardTop(1)
+	}
+
+
 
 	return (
 		<div className="player">
-			<div className="view">
+    <div className="view">
 				<h4>
 					{cardNotHighEnough === true ? (
 						'your card is not high enough!'
@@ -92,15 +95,10 @@ const Player = (props) => {
 					)}
 				</h4>
 			</div>
-
-			<h3>
-				{props.turn === true ? (
-					'you can play'
-				) : (
-					'wait for the other player'
-				)}
-			</h3>
-			{props.player.cards.map((card) => (
+			<button onClick={takeDiscard}>Take Discard Pile</button>
+			<p>{props.side}</p>
+			<h3>{props.turn === true ? "you can play" : "wait for the other player"}</h3>
+			{props.player && props.player.cards.length && props.player.cards.map((card) => (
 				<img
 					onClick={playCard}
 					className={`card-pic ${card.code}`}
@@ -111,6 +109,7 @@ const Player = (props) => {
 			))}
 		</div>
 	);
+
 };
 
 const mapStateToProps = (state) => {
@@ -120,4 +119,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps)(Player);
+export default connect(mapStateToProps, { setDiscardTop })(Player);
