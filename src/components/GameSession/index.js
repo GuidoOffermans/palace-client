@@ -34,7 +34,7 @@ const GameSession = (props) => {
 
 	const startPlaying = () => {
 		startRequest()
-		startGame(true)
+		// startGame(true)
 	}
 
 	const startRequest = () => {
@@ -45,7 +45,7 @@ const GameSession = (props) => {
 			.catch(console.error)
 	};
 
-	if (!gameOn) {
+	if ( thisGame && thisGame.game_status === 'waiting' ) {
 		return (
 			<div>
 				<p>welcome to this game room</p>
@@ -62,7 +62,7 @@ const GameSession = (props) => {
 			
 			</div>
 		);
-	} else {
+	} if (thisGame && thisGame.game_status === 'playing') {
 		return (
 			<div>
 				{thisGame ? <GameTable game={thisGame} game_info={thisGame.game_info} userId={props.userId} gameId={thisGame.id} deck_id={thisGame.deck_id} jwt={jwt} /> : ''}
@@ -70,7 +70,9 @@ const GameSession = (props) => {
         {redirect ? <Redirect to="/" /> : ''}
 			</div>
 		)
-	}
+	} else {
+    return 'loading'
+  }
 };
 
 function mapStateToProps(state) {
