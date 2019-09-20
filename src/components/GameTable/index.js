@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DeckMiddle from './DeckMiddle';
 import Player from './Player';
-import Oppenent from './Opponent'
+import Oppenent from './Opponent';
 
 function GameTable(props) {
 	const [ currentUser, setCurrentUser ] = useState(null);
@@ -11,19 +11,28 @@ function GameTable(props) {
 		opp: false
 	});
 
-	useEffect(() => {
-    setTheTurn()
-		if (props.game_info && props.game_info.piles.length >= 2) {
-    //   console.log('in game table useeffect, game_info:', props.game_info);
-      
-			getOpponent();
-			getCurrentUser();
-		} else {
-		}
-	}, [props.userId, props.game.game_turn, props]);
+	useEffect(
+		() => {
+			setTheTurn();
+			if (props.game_info && props.game_info.piles.length >= 2) {
+				//   console.log('in game table useeffect, game_info:', props.game_info);
+
+				getOpponent();
+				getCurrentUser();
+			} else {
+			}
+		},
+		[ props.userId, props.game.game_turn, props ]
+	);
 
 	const setTheTurn = () => {
-    console.log('userID', props.userId, '--', 'gameturn', props.game.game_turn)
+		console.log(
+			'userID',
+			props.userId,
+			'--',
+			'gameturn',
+			props.game.game_turn
+		);
 		if (Number(props.userId) === Number(props.game.game_turn)) {
 			setTurn({
 				user: true,
@@ -63,14 +72,7 @@ function GameTable(props) {
 		return (
 			<div className="game-table">
 				{oppenent !== null ? (
-					<Oppenent
-						// turn={turn.user}
-						side="oppenent"
-						player={oppenent}
-						// gameId={props.gameId}
-						// deck_id={props.deck_id}
-						// jwt={props.jwt}
-					/>
+					<Oppenent side="oppenent" player={oppenent} />
 				) : (
 					''
 				)}
@@ -79,6 +81,7 @@ function GameTable(props) {
 						remaining={props.game_info.remaining}
 						gameId={props.gameId}
 						deck_id={props.deck_id}
+            thisGame={props.thisGame}
 						jwt={props.jwt}
 						piles={props.game_info.piles}
 					/>
@@ -91,6 +94,7 @@ function GameTable(props) {
 						side="you"
 						player={currentUser}
 						gameId={props.gameId}
+            game_turn={props.game.game_turn}
 						deck_id={props.deck_id}
 						jwt={props.jwt}
 					/>

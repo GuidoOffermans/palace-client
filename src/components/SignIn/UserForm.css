@@ -1,7 +1,11 @@
+h2 {
+  margin-top: 3rem;
+}
+
 form {
   width: 30rem;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 0rem;
 }
 
 input[type=text] {
@@ -28,8 +32,14 @@ input[type=submit], .userform-box button {
 
 .userform-box button {
  width: 15rem; 
- margin: 2rem;
+ margin: 0rem;
 }
+
+.userform-box p {
+  
+  margin-top: 1.5rem;
+  
+ }
 
 input[type=submit]:hover {
   background-color: #45a049;
