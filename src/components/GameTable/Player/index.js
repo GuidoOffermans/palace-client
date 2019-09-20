@@ -2,11 +2,12 @@ import React from 'react';
 import { url } from '../../../constants';
 import request from 'superagent';
 import { connect } from 'react-redux'
-import { useState } from 'react'
+// import { useState } from 'react'
+import { setDiscardTop } from '../../../redux/actions'
 
 const Player = (props) => {
 
-	const [cannotPlay, setCannotPlay] = useState(false)
+	// const [cannotPlay, setCannotPlay] = useState(false)
 
 	const translateCard = (cardValue) => {
 		if (cardValue[0] === '2') return 2
@@ -26,10 +27,6 @@ const Player = (props) => {
 		return cardValue
 	}
 
-	const parsePlayerCoice =(playerCoice) => {
-
-	}
-
 	const canPlayCard = (playerChoice) => {
 		console.log('playercoice:', playerChoice)
 		const card = translateCard(playerChoice)
@@ -41,7 +38,7 @@ const Player = (props) => {
 
 	const playCard = (e) => {
 		console.log('play card clicked-------------------------------------------------------')
-		if (cannotPlay === true) return
+		// if (cannotPlay === true) return
 		console.log('a card was clicked', e.target.className);
 		// console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
 		// console.log('target card:', e.target.alt);
@@ -62,28 +59,39 @@ const Player = (props) => {
 
 	};
 
-	console.log('props of player component:', props);
-	
-		return (
-			<div className="player">
-				<p>{props.side}</p>
-        <h3>{props.turn === true ? "you can play" : "wait for the other player"}</h3>
-				{props.player.cards.map((card) => (
-					<img
-						onClick={playCard}
-						className={`card-pic ${card.code}`}
-						src={card.image}
-						alt={card.code}
-						key={card.code}
-					/>
-				))}
-			</div>
-		);
-	
+	const takeDiscard = () => {
+		request
+			.put(`${url}/take-discard/${props.gameId}/${props.deck_id}`)
+			.send({ pileName: props.player.pileId})
+			.set('Authorization', `Bearer ${props.jwt}`)
+			.then(() => console.log('take card response received'))
+			.catch(console.error);
+		props.setDiscardTop(1)
+	}
+
+	// console.log('props of player component:', props);
+
+	return (
+		<div className="player">
+			<button onClick={takeDiscard}>Take Discard Pile</button>
+			<p>{props.side}</p>
+			<h3>{props.turn === true ? "you can play" : "wait for the other player"}</h3>
+			{props.player && props.player.cards.length && props.player.cards.map((card) => (
+				<img
+					onClick={playCard}
+					className={`card-pic ${card.code}`}
+					src={card.image}
+					alt={card.code}
+					key={card.code}
+				/>
+			))}
+		</div>
+	);
+
 };
 
 const mapStateToProps = state => {
 	return { discardTop: state.discardTop }
 }
 
-export default connect(mapStateToProps)(Player);
+export default connect(mapStateToProps, { setDiscardTop })(Player);

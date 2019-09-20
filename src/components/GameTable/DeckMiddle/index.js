@@ -21,7 +21,7 @@ class DeckMiddle extends React.Component {
     // console.log('deckmiddle props:', this.props.piles)
     
     const discardPile = this.props.piles.find(pile => pile.pileId === 'discard')
-    if (discardPile && discardPile.cards) {
+    if (discardPile && discardPile.cards && discardPile.cards.length) {
       console.log('deckmiddle component discardtop:', discardPile.cards[discardPile.cards.length-1].value)
       this.props.setDiscardTop(discardPile.cards[discardPile.cards.length-1].code)
       return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />
@@ -40,8 +40,4 @@ class DeckMiddle extends React.Component {
   }
 }
 
-
 export default connect(null, { setDiscardTop })(DeckMiddle);
-
-
-// 'https://cdn.imgbin.com/16/9/2/imgbin-contract-bridge-playing-card-poker-card-game-standard-52-card-deck-playing-card-back-bcH1GshuS6wCWKYRn4tVpjBzY.jpg'
