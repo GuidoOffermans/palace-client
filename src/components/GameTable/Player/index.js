@@ -9,24 +9,38 @@ const Player = (props) => {
 	const [cannotPlay, setCannotPlay] = useState(false)
 
 	const translateCard = (cardValue) => {
-		if (cardValue === 'JACK') return 11
-		if (cardValue === 'QUEEN') return 12
-		if (cardValue === 'KING') return 13
-		if (cardValue === 'ACE') return 14
+		if (cardValue[0] === '2') return 2
+		if (cardValue[0] === '3') return 3
+		if (cardValue[0] === '4') return 4
+		if (cardValue[0] === '5') return 5
+		if (cardValue[0] === '6') return 6
+		if (cardValue[0] === '7') return 7
+		if (cardValue[0] === '8') return 8
+		if (cardValue[0] === '9') return 9
+		if (cardValue[0] === '0') return 10
+		if (cardValue[0] === 'J') return 11
+		if (cardValue[0] === 'Q') return 12
+		if (cardValue[0] === 'K') return 13
+		if (cardValue[0] === 'A') return 14
 		console.log('translated card:', cardValue)
 		return cardValue
 	}
 
+	const parsePlayerCoice =(playerCoice) => {
+
+	}
+
 	const canPlayCard = (playerChoice) => {
+		console.log('playercoice:', playerChoice)
 		const card = translateCard(playerChoice)
-		let discard = null
-		if (props.discardTop) discard = translateCard(props.discardTop)
-		else return true
+		const discard = translateCard(props.discardTop)
 		if (card > discard) return true
+		else if (card === 2) return true
 		else return false
 	}
 
 	const playCard = (e) => {
+		console.log('play card clicked-------------------------------------------------------')
 		if (cannotPlay === true) return
 		console.log('a card was clicked', e.target.className);
 		// console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
