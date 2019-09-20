@@ -2,6 +2,8 @@ import React from 'react'
 import '../GameTable.css'
 import request from 'superagent'
 import { url } from '../../../constants';
+import { connect } from 'react-redux'
+import { setDiscardTop } from '../../../redux/actions'
 
 
 class DeckMiddle extends React.Component {
@@ -19,8 +21,11 @@ class DeckMiddle extends React.Component {
     // console.log('deckmiddle props:', this.props.piles)
     
     const discardPile = this.props.piles.find(pile => pile.pileId === 'discard')
-    if (discardPile && discardPile.cards) return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />
-    // if (discardPile) return console.log("discard pile cards", discardPile.cards)
+    if (discardPile && discardPile.cards) {
+      console.log('deckmiddle component discardtop:', discardPile.cards[discardPile.cards.length-1].value)
+      this.props.setDiscardTop(discardPile.cards[discardPile.cards.length-1].code)
+      return <img  className="card-pic" alt="back-pic" src={`${discardPile.cards[discardPile.cards.length-1].image}`} />
+    }
     else return ''
   }
 
@@ -35,6 +40,8 @@ class DeckMiddle extends React.Component {
   }
 }
 
-export default DeckMiddle
+
+export default connect(null, { setDiscardTop })(DeckMiddle);
+
 
 // 'https://cdn.imgbin.com/16/9/2/imgbin-contract-bridge-playing-card-poker-card-game-standard-52-card-deck-playing-card-back-bcH1GshuS6wCWKYRn4tVpjBzY.jpg'
