@@ -1,15 +1,14 @@
 import React from 'react';
 import { url } from '../../../constants';
 import request from 'superagent';
-
-
 import { connect } from 'react-redux';
 import { useState } from 'react';
+import {setDiscardTop} from '../../../redux/actions'
 
 const Player = (props) => {
 	console.log('playerPROPS:', props);
 	const [ youPlayedCard, setYouPlayedCard ] = useState(false);
-	const [ cardNotHighEnough, setCardNotHighEnough ] = useState(true);
+	const [ cardNotHighEnough, setCardNotHighEnough ] = useState(false);
 	// const [ canPlay, setCanPlay ] = useState();
 
 	const translateCard = (cardValue) => {
@@ -86,6 +85,7 @@ const Player = (props) => {
 
 	return (
 		<div className="player">
+    {cardNotHighEnough === true?	<button onClick={takeDiscard}>Take Discard Pile</button> : ''}
     <div className="view">
 				<h4>
 					{cardNotHighEnough === true ? (
@@ -95,8 +95,7 @@ const Player = (props) => {
 					)}
 				</h4>
 			</div>
-			<button onClick={takeDiscard}>Take Discard Pile</button>
-			<p>{props.side}</p>
+		
 			<h3>{props.turn === true ? "you can play" : "wait for the other player"}</h3>
 			{props.player && props.player.cards.length && props.player.cards.map((card) => (
 				<img
