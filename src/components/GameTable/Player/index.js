@@ -13,6 +13,7 @@ const Player = (props) => {
 		if (cardValue === 'QUEEN') return 12
 		if (cardValue === 'KING') return 13
 		if (cardValue === 'ACE') return 14
+		console.log('translated card:', cardValue)
 		return cardValue
 	}
 
@@ -31,7 +32,7 @@ const Player = (props) => {
 		// console.log('deckid:', props.deck_id, 'gameid:', props.gameId);
 		// console.log('target card:', e.target.alt);
 		console.log('player component discardtop', props.discardTop)
-
+		console.log('canplaycard:', canPlayCard(e.target.alt))
 		if (canPlayCard(e.target.alt)) {
 			// setCannotPlay(true)
 			request
