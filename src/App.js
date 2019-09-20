@@ -41,7 +41,7 @@ function App(props) {
 				<Route path="/game/:id" component={GameSession} />
 			</main>
 			<footer>
-				<p>footer</p>
+				<p>made by <b>Olga</b> and <b>Guido</b></p>
 			</footer>
 		</div>
 	);

@@ -4,6 +4,7 @@ export default function SignUpForm(props) {
 
   return (
     <form onSubmit={props.onSubmit}>
+     <h2>Sign Up</h2>
       <label>
         Name:
       <input type="text" name="name" onChange={props.onChange} value={props.values.name} placeholder={props.values.name} />
